@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.93c040e5.css",
+    "main.js": "/static/js/main.6b39a457.js",
+    "static/media/main_bg_.jpg": "/static/media/main_bg_.dfcb8763ef973a5e0721.jpg",
+    "static/media/main_photo.jpg": "/static/media/main_photo.ecf94349fef5b24adef9.jpg",
+    "static/media/plans.jpg": "/static/media/plans.cca8fe94817523e47590.jpg",
+    "static/media/UI-developer_Resume-Mkrtich-Aleksanyan.pdf": "/static/media/UI-developer_Resume-Mkrtich-Aleksanyan.254f5abed15a55659e26.pdf",
+    "static/media/main_bg_.webp": "/static/media/main_bg_.648ba76bc26a3e0f3d73.webp",
+    "static/media/main_photo.webp": "/static/media/main_photo.a7d4824ac330988b557e.webp",
+    "static/media/plans.webp": "/static/media/plans.499f20c5c622dc75e508.webp",
+    "index.html": "/index.html",
+    "main.93c040e5.css.map": "/static/css/main.93c040e5.css.map",
+    "main.6b39a457.js.map": "/static/js/main.6b39a457.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93c040e5.css",
+    "static/js/main.6b39a457.js"
+  ]
+}
