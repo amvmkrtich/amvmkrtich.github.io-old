@@ -1,0 +1,15 @@
+.btn{
+  font-size: 14px;
+  font-weight: 600;
+  padding: 16px 26px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  text-decoration: none !important;
+  &--primary{
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    &:hover{
+      background-color: var(--primary-text-color);
+      color: #fff;
+    }
+  }
+}

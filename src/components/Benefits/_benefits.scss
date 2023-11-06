@@ -1,0 +1,97 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+.benefits{
+  padding-top: 120px;
+  @include head-centered();
+
+  @include respond-below(lg){
+    padding-top: 45px;
+  }
+  @include respond-above(md){
+    &__col{
+      padding-left: 70px;
+    }
+  }
+  @include respond-below(md){
+    &__col{
+      &:not(:last-child){
+        margin-bottom: 40px;
+      }
+    }
+  }
+  @include respond-above(sm){
+    &__body{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+  }
+}
+
+.line-list{
+  --left-size: 43px;
+  --y-space: 40px;
+  @include before_circle(15px);
+  padding-left: var(--left-size);
+  &:after{
+    left: 0;
+    top: 10px;
+    height: 0;
+    border-left: 1px solid var(--primary-text-color);
+    @include trns($duration: 1.9s, $delay: .5s);
+    @include pseudo();
+  }
+  &:before{
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+  &__title{
+    margin-bottom: var(--y-space);
+  }
+  &__item{
+    position: relative;
+    &:not(:last-child){
+      margin-bottom: var(--y-space);
+    }
+    &:before{
+      @include pseudo;
+      top: 18px;
+      left: 0;
+      transform: translateX(-100%);
+      border-bottom: 1px solid var(--primary-text-color);
+      width: var(--left-size);
+    }
+  }
+  &.is-visible{
+    &:after{
+      height: 100%;
+    }
+  }
+  @include respond-below(sm){
+    --left-size: 30px;
+    --y-space: 25px;
+  }
+}
+
+.line-box{
+  font-size: 13px;
+  &__head{
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+  }
+  &__icon{
+    transform: translateY(10px);
+    margin-right: 20px;
+    @include before_circle;
+    .icon{
+      font-size: 25px;
+      transform: translate(7px, 7px);
+    }
+  }
+  &__details{
+    .title{
+      margin-bottom: 3px;
+    }
+  }
+}

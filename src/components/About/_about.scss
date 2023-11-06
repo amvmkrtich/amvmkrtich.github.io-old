@@ -1,0 +1,95 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+.about{
+  $p: &;
+  padding-top: 120px;
+  &__row{
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    gap: 60px;
+  }
+  &__text{
+    padding-top: 6px;
+  }
+  &__title{
+    margin-bottom: 20px;
+    > span {
+      @include highlight();
+    }
+  }
+  &__media{
+    grid-row: 1 / 3;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__social-links{
+    margin-bottom: 20px;
+  }
+  &--contacts{
+    margin-bottom: 120px;
+    font-size: 14px;
+    #{$p}__row{
+      row-gap: 0;
+    }
+    #{$p}__media{
+      position: relative;
+      img{
+        position: absolute;
+        inset: 0;
+      }
+    }
+    .contact-form{
+      margin-top: 25px;
+    }
+  }
+  @include respond-below(lg){
+    padding-top: 45px;
+    &__row{
+      gap: 30px;
+      grid-template-columns: 300px 1fr;
+    }
+    &--contacts{
+      margin-bottom: 45px;
+    }
+  }
+  @include respond-below(sm){
+    &__row{
+      grid-template-columns: 100%;
+    }
+  }
+  @include respond-below(xs){
+    &__text{
+      font-size: 15px;
+    }
+  }
+}
+
+.main-skills-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 50px;
+  @include respond-below(lg){
+    gap: 20px;
+  }
+  @include respond-below(xs){
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-skill{
+  font-size: 12px;
+  line-height: normal;
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  gap: 27px;
+  &__icon{
+    @include before_circle;
+    .icon{
+      font-size: 25px;
+      transform: translate(7px, 7px);
+    }
+  }
+}

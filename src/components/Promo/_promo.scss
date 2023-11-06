@@ -1,0 +1,29 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+.promo{
+  color: var(--primary-text-color);
+  min-height: 100vh;
+  position: relative;
+  padding-block: 20vh;
+  background: {
+    image: url("../../img/main_bg_.webp");
+    size: cover;
+    position: 50%;
+    repeat: no-repeat;
+  };
+  @include flexbox(center);
+  &__title{
+    margin-top: 15px;
+  }
+  &__link{
+    font-weight: 600;
+    font-size: 14px;
+    &:not(:last-child){
+      margin-right: 30px;
+    }
+  }
+  &__btns{
+    margin-top: 25px;
+    @include flexbox(center);
+  }
+}

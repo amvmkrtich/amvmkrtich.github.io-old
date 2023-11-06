@@ -1,0 +1,41 @@
+:root {
+    --cont-width: 1200px;
+    --x-space: 30px;
+    --primary-color: #37e2ad;
+    --primary-text-color: #000;
+}
+
+@import 'libs/bootstrap-reboot.min';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import "base/variables";
+@import "base/mixins";
+@import "base/fonts";
+@import "base/reset";
+@import "base/extends";
+@import "base/general";
+@import "base/buttons";
+@import "base/title";
+//@import "base/social-links";
+
+/*
+@import "blocks/promo";
+@import "blocks/sidepanel";
+@import "blocks/menu";
+@import "blocks/about";
+@import "blocks/benefits";
+@import "blocks/skills";
+@import "blocks/works";
+@import "blocks/privacy";*/
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    @include respond-below(sm){
+        --x-space: 25px;
+    }
+}

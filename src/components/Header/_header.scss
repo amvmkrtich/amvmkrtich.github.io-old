@@ -1,0 +1,40 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+.header{
+  &--abs, &--fix{
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  &--abs{
+    position: absolute;
+  }
+  &--fix{
+    position: fixed;
+  }
+  &__top{
+    padding: 20px 30px;
+    display: flex;
+    .hamburger{
+      outline: none;
+      margin-left: auto;
+    }
+  }
+}
+
+.menu-toggle{
+  line-height: 1;
+  padding-top: 4px;
+  .header_abs &, .mobile-menu-open &{
+    color: #fff;
+  }
+  .icon{
+    @include size(28px);
+  }
+  @include respond-below(sm){
+    .icon{
+      @include size(12px);
+    }
+  }
+}

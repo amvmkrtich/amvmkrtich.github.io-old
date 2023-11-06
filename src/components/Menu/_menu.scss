@@ -1,0 +1,109 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+.hamburger{
+  align-content: space-between;
+  @include size(36px, 21px);
+  @include flex-column(space-between, flex-end);
+  &__body{
+    display: block;
+    @include size(100%, 3px);
+    background-color: var(--primary-text-color);
+  }
+  &:before, &:after{
+    content: '';
+    background-color: var(--primary-text-color);
+    @include size(80%, 3px);
+  }
+}
+
+.menu{
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  @include size(100vw, 100vh);
+  @include trns($duration: 0.3s, $delay: 0.3s);
+  &__block{
+    position: relative;
+    z-index: 100;
+    padding: 25px;
+    padding-left: 40px;
+    background-color: var(--primary-color);
+    transform: translateX(-100%);
+    overflow: auto;
+    @include flex-column();
+    @include trns($delay: 0s);
+    @include size(345px, 100%);
+    body.menu-visible &{
+      transform: translateX(0);
+      transition-delay: 0.3s;
+    }
+  }
+  &__overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+
+  }
+  &__close{
+    align-self: flex-end;
+    outline: none !important;
+    border: none;
+  }
+  & &__social-links{
+    margin-top: auto;
+    align-self: center;
+    > li{
+      a:hover{
+        color: #fff;
+      }
+    }
+  }
+  nav{
+    margin-block: 85px 30px;
+    font-size: 24px;
+    font-weight: 600;
+    ul{
+      list-style-type: circle;
+      list-style-position: inside;
+      > li{
+        margin-bottom: 15px;
+      }
+    }
+    a{
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      &:before{
+        content: '';
+        border: 1px solid var(--primary-text-color);
+        left: -26px;
+        @include size(0);
+        @include center(y);
+        @include trns($tm-func: cubic-bezier(0.24, 0.01, 0, 1));
+      }
+      &:hover{
+        color: var(--primary-text-color);
+        &:before{
+          width: 100%;
+          transition-duration: 1.2s;
+        }
+      }
+    }
+  }
+  body.menu-visible &{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  @include respond-below(sm){
+    nav{
+      margin-top: 30px;
+    }
+  }
+}

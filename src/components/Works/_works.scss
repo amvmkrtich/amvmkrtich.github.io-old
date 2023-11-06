@@ -1,0 +1,132 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.work{
+  $p: &;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  @include trns;
+
+  picture{
+    position: absolute;
+    inset: 0;
+  }
+  &__info{
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    overflow: hidden;
+    opacity: 0;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.79);
+    align-content: center;
+    @include flexbox(center, center);
+    @include trns;
+    > *{
+      transform: translateY(10px);
+      @include trns;
+    }
+  }
+  &__title{
+    font-weight: 500;
+    width: 100%;
+  }
+  &__role{
+    color: inherit;
+    opacity: .7;
+  }
+  img{
+    object-fit: cover;
+    @include center;
+    @include size(100%);
+  }
+  &:nth-child(4){
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+  }
+  &:nth-child(6){
+    grid-column: 2 / 4;
+  }
+  &s{
+    padding-top: 120px;
+    @include head-centered;
+
+    &__body{
+      display: grid;
+      gap: 5px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 280px);
+      grid-auto-rows: 280px;
+    }
+    &__footer{
+      text-align: center;
+      padding-top: 45px;
+    }
+  }
+  &:hover{
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.8);
+    &:after{
+      opacity: 1;
+    }
+    #{$p}__info{
+      opacity: 1;
+      > *{
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // transition
+  &.enter {
+    opacity: 0;
+    &-active {
+      opacity: 1;
+      transition: opacity 800ms ease-in;
+    }
+  }
+  &.exit {
+    opacity: 1;
+    &-active {
+      opacity: 0;
+      transition: opacity 800ms ease-in;
+    }
+  }
+  @include respond-below(md){
+    &s{
+      padding-top: 75px;
+      &__body{
+        grid-template-rows: repeat(2, 25vw);
+        grid-auto-rows: 25vw;
+      }
+    }
+  }
+  @include respond-below(sm){
+    &:nth-child(4){
+      grid-column: 3 / 4;
+      grid-row: 1 / 3;
+    }
+    &:nth-child(6){
+      grid-column: 1 / 3;
+    }
+    &s{
+      &__body{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 33vw);
+        grid-auto-rows: 33vw;
+      }
+    }
+  }
+  @include respond-below(xs){
+    height: 80vw;
+    margin-bottom: 20px;
+    &s{
+      &__body{
+        display: block;
+      }
+    }
+  }
+}

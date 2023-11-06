@@ -1,0 +1,476 @@
+
+// General
+html{
+  scroll-behavior: smooth;
+}
+body{
+  color: var(--primary-text-color);
+  font:{
+    family: var(--font-main);
+  }
+  &.modal-open, &.menu-visible{
+    overflow: hidden;
+  }
+  @include respond-below(md){
+  }
+}
+p{
+  @include txtM0;
+}
+
+strong{
+  font-weight: 600;
+}
+.wrapper{
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  @include flex-column();
+  body.modal-open &{
+  }
+}
+.page-content {
+  width: 100%;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.container{
+  @include container();
+  &.container-fluid{
+    max-width: 100%;
+    @include space(x, 0);
+  }
+}
+
+.row{
+  @include m-space(calc(-1*var(--col_space)));
+  @include flex;
+    > *{
+      @include space(x, var(--col_space));
+    }
+    > .col{
+      position: relative;
+      flex: 1 1 0;
+      &--half{
+        @include col-sizing(50%);
+      }
+    }
+  @include respond-below(sm){
+    > .col{
+      &--half{
+        @include col-sizing(100%);
+      }
+    }
+  }
+}
+
+//  Headings
+
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
+  margin-top: 0;
+  font: {
+  }
+}
+h1,.h1{
+}
+h2,.h2{
+}
+h3,.h3{
+}
+h4,.h4{
+}
+h5, .h5{
+}
+h6,.h6{
+}
+a{
+  color: inherit;
+  @include trns();
+  &:hover{
+    border-bottom-color: inherit;
+  }
+}
+p , small{
+  > a{
+    @extend %link-underline;
+  }
+}
+.link{
+  display: inline-block;
+  border-bottom: 1px solid;
+  &:hover{
+    border-bottom-color: transparent;
+  }
+
+}
+.strached-link{
+  &:after{
+    @include pseudoLink();
+  }
+}
+blockquote{
+  position: relative;
+  cite{
+  }
+  @include respond-below(sm){
+
+  }
+}
+firuge{
+  display: block;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  img{
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  figcaption{
+    text-align: right;
+  }
+}
+sup{
+
+}
+strong{
+
+}
+hr{
+  border: none;
+  border-top: var(--border);
+}
+.icon {
+  display: inline-block;
+  @include size(1em);
+}
+
+// mobile nav
+.mobile-nav {
+  @include flex-column();
+  position: fixed;
+  @include size(100%, 100vh);
+  top: 0;
+  padding: 113px 30px 0;
+  z-index: 998;
+  overflow: auto;
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateX(-105%);
+  @include trns(all, .1s);
+
+  body.mobile-menu-open & {
+    transform: translateX(0);
+    transition-duration: .3s;
+  }
+
+  > * {
+    transform: translateX(-25%);
+    opacity: 0;
+    @include trns($duration: .5s, $delay: .2s);
+
+    body.mobile-menu-open & {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .menu {
+    > li{
+      border-bottom: 1px solid;
+      @include space(y, 15px);
+      @include col-sizing(100%);
+      > a{
+        font-size: 22px;
+      }
+    }
+  }
+  @include respond-above(md){
+    display: none;
+  }
+}
+
+// Buttons
+.btn {
+  text-align: center;
+  line-height: 1;
+  @include trns();
+  @include inline-flexbox(center, center);
+  color: inherit;
+  &--primary{
+
+  }
+  &--secondary{
+  }
+  &--hollow{
+  }
+  &--lg{
+  }
+  &--sm{
+  }
+  &--expand{
+    width: 100%;
+  }
+  &s-group{
+    .btn{
+      margin-right: 10px;
+    }
+  }
+}
+
+// Forms
+.contact-form{
+  label{
+    a{
+      margin-left: 4px;
+      @extend %link-underline-hover;
+    }
+  }
+  &--template-2col{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 45px);
+    gap: 25px;
+  }
+  &__field{
+    position: relative;
+    label{
+      position: absolute;
+      top: 0;
+      left: 10px;
+      background-color: #fff;
+      display: inline-block;
+      padding-inline: 10px;
+      transform: translateY(-50%);
+    }
+    &--privacy{
+      order: 6;
+      align-self: center;
+      label{
+        position: relative;
+        transform: none;
+        margin-bottom: 0;
+        left: 0;
+        padding-left: 0;
+      }
+    }
+    &--message{
+      grid-column: 1 / 3;
+      grid-row: 2 / 5;
+
+      textarea{
+        height: 100%;
+        min-height: 143px;
+      }
+    }
+  }
+  @include respond-below(sm){
+    &--template-2col{
+      grid-template-columns: repeat(1, 100%);
+      grid-template-rows: auto;
+    }
+    &__field{
+      &--message {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
+      }
+      &--privacy{
+        order: 0;
+      }
+    }
+  }
+}
+.gform_footer{
+  [type=submit]{
+
+  }
+}
+%input-style{
+  padding: 12px 20px;
+  @include trns;
+  font-weight: inherit;
+  border: 1px solid var(--primary-text-color);
+  @include size(100%, 45px);
+
+  &:focus{
+    box-shadow: 0 4px 13px -1px rgba(0, 0, 0, 0.27);
+  }
+}
+input{
+  &.form-field,
+  &[type=number],
+  &[type=search],
+  &[type=tel],
+  &[type=time],
+  &[type=url],
+  &[type=color],
+  &[type=email],
+  &[type=week],
+  &[type=month],
+  &[type=datetime-local],
+  &[type=datetime],
+  &[type=date],
+  &[type=password],
+  &[type=number],
+  &[type=text]{
+    @extend %input-style;
+  }
+  &[type=checkbox],
+  &[type=radio],
+  &[type=file]{
+    display: none;
+  }
+  &[type=checkbox]{
+    + label{
+      display: flex;
+      &:before{
+        border: 1px solid var(--primary-text-color);
+        flex-shrink: 0;
+        margin-right: 12px;
+        @include size(1.3em);
+        @include trns($duration: .15s);
+        @include pseudo($pos: static);
+      }
+    }
+    &:checked + label:before{
+      background-color: var(--primary-text-color);
+      padding: 2px;
+      background-clip: content-box;
+    }
+  }
+}
+
+[type=submit]{
+  @extend .btn, .btn--primary;
+}
+textarea{
+  @extend %input-style;
+}
+select{
+  @extend %input-style;
+  border: none;
+  outline: none;
+  appearance: none;
+  background: {
+    //image: url(../images/arrow-down.png);
+    size: 19px 10px;
+    repeat: no-repeat;
+    position: calc(100% - 10px) 50%;
+  }
+}
+
+
+.menu {
+  @include listReset();
+  @include flexbox();
+
+  &--vertical {
+    flex-wrap: wrap;
+
+    > li {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+
+.accordion {
+  // uncomment and replace necessary rows
+  /*
+  --arrow-size: 16px;
+  @include listReset();
+  &__item{
+    margin-bottom: 9px;
+  }
+  & &__title {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 15px 30px 15px 0;
+    border-bottom: 1px solid rgba(28, 69, 57, 0.2);
+    &:after{
+      @include arrow(down, var(--arrow-size));
+      right: 5px;
+      top: calc(50% - 0.8*var(--arrow-size));
+      @include trns($duration: .15s);
+    }
+  }
+  &__content {
+    display: none;
+    @include space(y, 18px);
+  }
+  &__item[data-state="open"] {
+    > .accordion__title {
+      &:after {
+        transform: rotateZ(135deg);
+        top: calc(50% - 1px);
+      }
+    }
+    > .accordion__content{
+      display: block;
+    }
+  }
+  @include respond-below(sm){
+    --arrow-size: 9px;
+    & &__title {
+      line-height: 1.09;
+    }
+  }*/
+}
+
+.modal{
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 99999;
+  @include space(x, 20px);
+
+  &__inner{
+    width: 90%;
+    max-width: calc(var(--cont-width) - 2*(var(--x-space)));
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 40px 44px;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    @include center(x);
+    top: 0;
+    @include trns;
+    body.modal-open &{
+      opacity: 1;
+      visibility: visible;
+      top: 5vh;
+    }
+  }
+  &__close{
+    @include inline-flexbox(center, center);
+  }
+}
+
+// visibility
+.hide{
+  @extend %hide;
+}
+@each $key, $value in $breakpoints {
+  .d-flex-#{$key}-down{@extend %hide}
+  .d-block-#{$key}-down{@extend %hide}
+
+  @include respond-below($key){
+    .d-flex-#{$key}-down{
+      display: flex;
+    }
+    .d-block-#{$key}-down{
+      display: block;
+    }
+    .d-none-#{$key}-down{
+      display: none;
+    }
+  }
+}
+
+
+// keyframes
